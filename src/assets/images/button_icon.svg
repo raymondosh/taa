@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Lightbox" transform="translate(-185.000000, -64.000000)" fill-rule="nonzero" stroke="#1C2832">
+            <g id="Button" transform="translate(170.000000, 53.000000)">
+                <g id="icon" transform="translate(16.000000, 12.000000)">
+                    <path d="M10.7107858,10.7125329 L8.70017904,5.68433182 C8.5471639,5.2933101 8.27326864,5.28718751 8.09959692,5.67055886 L6.50289339,9.18211167 L5.08062547,7.47492593 C4.97783607,7.32327931 4.80166858,7.23836892 4.6190328,7.25244515 C4.43639702,7.26652043 4.2753157,7.37742322 4.1969685,7.54302972 L2.29500002,10.7125329" id="Pfad-152"></path>
+                    <rect id="Rechteck-294" x="0" y="-1.77635684e-15" width="13.0062151" height="13.0085831" rx="1"></rect>
+                    <path d="M14.5426438,4.50000002 L15.3077157,4.56963445 C15.7267106,4.60962059 16.0347245,4.98060371 15.9970449,5.39988901 L15.0934957,15.3078365 C15.05314,15.7272549 14.6813691,16.0351238 14.2618631,15.9965286 L3.59600002,15.0262394" id="Pfad-153"></path>
+                    <ellipse id="Ellipse-34" cx="3.44282186" cy="3.44344878" rx="1.14760721" ry="1.14781618"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
