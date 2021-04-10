@@ -1,25 +1,31 @@
 <template>
-  <div>
-    <div class="lightbox">
-      <div class="flex">
-        <div class="info">
+  <!-- <div> -->
+  <div class="lightbox">
+    <div class="info">
+      <div class="container">
+        <div class="info-box">
           <div class="">
             <button class="close-btn" @click.stop="hide">Close</button>
           </div>
           <p>Trip Photos</p>
         </div>
+      </div>
+    </div>
 
-        <div class="lightbox-image" @click.stop="">
-          <img
-            @click="selectImg(index)"
-            v-for="(img, index) in images"
-            :key="index"
-            :src="img"
-          />
+    <div class="container">
+      <div class="lightbox-image" @click.stop="">
+        <div
+          class="lightbox-image-wrap"
+          @click="selectImg(index)"
+          v-for="(img, index) in images"
+          :key="index"
+        >
+          <img :src="img" />
         </div>
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -55,43 +61,59 @@ export default {
 
 <style scoped>
 .lightbox {
-  background: #fff;
+  background: #263542;
   position: fixed;
   z-index: 999;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
+}
 
-  padding-top: 5rem;
+.container {
+  max-width: 1440px;
+  margin: auto;
 }
 
 .lightbox-image {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
+  background: #263542;
+  grid-template-columns: repeat(auto-fill, minmax(428px, 1fr));
   justify-content: center;
   align-content: center;
-  grid-gap: 10px;
-  height: 100vh;
-
-  background: #263542;
+  grid-gap: 2rem;
+  padding: 2rem 5.8rem 5.5rem;
+  overflow: auto;
 }
 
+.lightbox-image .lightbox-image-wrap {
+  width: 100%;
+  height: 241px;
+  margin: auto;
+  cursor: pointer;
+  overflow: hidden;
+}
 .lightbox-image img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .info {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  justify-content: center;
-  align-content: center;
-  grid-gap: 10px;
-
-  margin-bottom: 1.6rem;
+  margin-bottom: 0;
   color: #181818;
+  background: white;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  padding: 1.6rem 5.8rem;
+}
+
+.info-box > p {
+  margin: auto;
 }
 
 .close-btn {
@@ -101,11 +123,5 @@ export default {
   color: #263542;
   border-radius: 0.4rem;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .lightbox-image {
-    display: block;
-  }
 }
 </style>

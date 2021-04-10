@@ -1,33 +1,30 @@
 <template>
   <!-- <div> -->
   <div class="lightbox">
-    <div class="flex2">
-      <div class="flex3">
-        <div class="flex1">
-          <div class="info">
-            <div class="info-btn">
-              <button class="close-btn" @click.stop="hide">Close</button>
-              <button @click.stop="showMultiple" class="photo-btn">
-                <img
-                  src="../../assets/images/button_icon.svg"
-                  alt="image icon"
-                />
-                <span>Show all photos </span>
-              </button>
-            </div>
-            <p>{{ index + 1 }} of {{ images.length }}</p>
+    <div class="container">
+      <div class="flex">
+        <!-- <div class="meta-box"> -->
+        <div class="info">
+          <div class="info-btn">
+            <button class="close-btn" @click.stop="hide">Close</button>
+            <button @click.stop="showMultiple" class="photo-btn">
+              <img src="../../assets/images/button_icon.svg" alt="image icon" />
+              <span>Show all photos </span>
+            </button>
           </div>
+          <p>{{ index + 1 }} of {{ images.length }}</p>
         </div>
+        <!-- </div> -->
 
-        <div class="flex">
+        <div class="main-content">
           <div
-            class="control"
+            class="control controlFirst"
             @click.stop="prev"
-            :class="{ invisible: !hasPrev() }"
+            :class="{ invisible: !hasPrev }"
           >
             <svg
               class="pointer-events-none"
-              fill="#fff"
+              fill="#1C2832"
               height="48"
               viewBox="0 0 24 24"
               width="48"
@@ -41,13 +38,13 @@
             <img :src="images[index]" />
           </div>
           <div
-            class="control"
+            class="control controlSecond"
             @click.stop="next"
-            :class="{ invisible: !hasNext() }"
+            :class="{ invisible: !hasNext }"
           >
             <svg
               class="pointer-events-none"
-              fill="#fff"
+              fill="#1C2832"
               height="48"
               viewBox="0 0 24 24"
               width="48"
@@ -96,7 +93,14 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    hasNext() {
+      return this.index + 1 < this.images.length;
+    },
+    hasPrev() {
+      return this.index - 1 >= 0;
+    },
+  },
   methods: {
     show() {
       this.$emit("show");
@@ -104,20 +108,11 @@ export default {
     hide() {
       this.$emit("hide");
     },
-    showMultiple() {
-      this.$emit("show-multiple-lightbox");
-    },
-    hasNext() {
-      return this.index + 1 < this.images.length;
-    },
-    hasPrev() {
-      return this.index - 1 >= 0;
-    },
     next() {
-      this.hasNext() && this.index++;
+      this.hasNext && this.index++;
     },
     prev() {
-      this.hasPrev() && this.index--;
+      this.hasPrev && this.index--;
     },
     onKeydown(e) {
       if (this.visible) {
@@ -157,49 +152,58 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-
-  padding-top: 10rem;
+  padding-top: 53px;
+  overflow: auto;
 }
 
 .lightbox-image {
   flex: 1;
   width: 100%;
+  max-width: 1098.67px;
   overflow: hidden;
+  min-height: 618px;
 }
 
 .lightbox-image img {
   width: 100%;
-  height: 400px;
-  background-position: bottom;
+  height: 100%;
   background-size: cover;
   max-width: 100%;
   object-fit: cover;
-  overflow: hidden;
-
   max-height: 80%;
   border: 2px solid white;
 }
 
 .image-meta {
-  margin-top: 1.6rem;
+  margin: 44px 0 107px;
   text-align: center;
 }
+.image-meta h2 {
+  font-size: 24px;
+  line-height: 29px;
+}
+.image-meta p {
+  font-size: 16px;
+  line-height: 19px;
+  color: #7d868e;
+}
 
-.flex2 {
-  max-width: 60%;
+.container {
+  max-width: 1324px;
   margin: 0 auto;
 }
 
-.flex {
+.main-content {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.flex3 {
+.flex {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .control {
@@ -212,14 +216,14 @@ export default {
 }
 
 .invisible {
-  display: none;
+  display: none !important;
 }
 
 .info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.6rem;
+  margin-bottom: 10.7rem;
   color: #fff;
 }
 
@@ -253,6 +257,25 @@ export default {
   margin-right: 0.6rem;
 }
 
+.control {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.controlSecond {
+  right: 0;
+}
+
+.controlFirst {
+  left: 0;
+}
+
 @media (max-width: 768px) {
   .lightbox-image img {
     width: 100%;
@@ -260,10 +283,6 @@ export default {
     background-position: bottom;
     background-size: cover;
     max-width: 100%;
-    /* object-fit: cover; */
-    /* overflow: hidden; */
-
-    /* max-height: 80%; */
     border: 2px solid white;
   }
 
